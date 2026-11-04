@@ -1,0 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vbucher <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/04 14:36:40 by vbucher           #+#    #+#             */
+/*   Updated: 2026/11/04 14:46:02 by vbucher          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		if (s1[i] - s2[i] != 0)
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	return 0;
+}
+
+/*
+#include <stdio.h>
+int	main()
+{
+	printf("%d\n", ft_strncmp("abcdef", "abcg", 4));
+}
+*/
