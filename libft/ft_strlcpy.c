@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbucher <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 12:06:06 by vbucher           #+#    #+#             */
-/*   Updated: 2026/11/04 12:49:15 by vbucher          ###   ########.fr       */
+/*   Updated: 2026/11/05 13:45:26 by vbucher          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	return (size_s);
 }
 
+/*
 #include <stdio.h>
-
 int	main()
 {
 	char	d[12] = "dest";
@@ -36,4 +36,4 @@ int	main()
 	printf("%d\n", (int)si);
 	printf("%s\n", d);
 }
-
+*/
