@@ -6,7 +6,7 @@
 /*   By: vbucher <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 13:49:56 by vbucher           #+#    #+#             */
-/*   Updated: 2026/11/09 14:46:21 by vbucher          ###   ########.fr       */
+/*   Updated: 2026/11/12 17:53:07 by vbucher          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,54 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f) (void *), void (*del) (void *))
 {
-	t_list	*tempo;
-	t_list	*tempn;
+	t_list	*temp;
 	t_list	*new;
 
-	tempo->next = lst;
-	new = f(lst);
-	tempn->next = new;
-	while (tempo->next->next != NULL)
+	if (!lst || !f || !del)
+		return NULL;
+	temp = lst;
+	new = ft_lstnew(f(temp->content));
+	while (temp->next)
 	{
-		tempo->next = tempo->next->next;
-		tempn->next->next = f(tempo->next);
-		tempo->next = tempo->next->next;
+		temp = temp->next;
+		ft_lstadd_back(&new, ft_lstnew(f(temp->content)));
 	}
 	return new;
 }
+
+/*
+void	*f(void *x)
+{
+	char	*c;
+
+	c = (char *)x.content;
+	c++;
+	return x;
+}
+*/
+/*
+#include <stdio.h>
+int	main()
+{
+	t_list *lst;
+	int	i;
+	char	c[] = "a";
+	t_list	*temp;
+
+	i = 0;
+	lst = ft_lstnew(c);
+	temp = ft_lstnew(NULL);
+	temp = lst;
+	while (i < 3)
+	{
+		c[0]  = c[0] + 1;
+		ft_lstadd_back(&lst, ft_lstnew(c));
+		i++;
+	}
+	while (temp != NULL)
+	{
+		printf("%s\n", (char *)temp->content);
+		temp = temp->next;
+	}
+}
+*/

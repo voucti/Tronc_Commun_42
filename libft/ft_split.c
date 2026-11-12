@@ -6,13 +6,13 @@
 /*   By: vbucher <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/05 12:29:05 by vbucher           #+#    #+#             */
-/*   Updated: 2026/11/05 14:04:26 by vbucher          ###   ########.fr       */
+/*   Updated: 2026/11/12 11:14:33 by vbucher          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	tot_count(char const *s, char c)
+static int	tot_count(char const *s, char c)
 {
 	int	i;
 	int	count;
@@ -21,14 +21,15 @@ int	tot_count(char const *s, char c)
 	count = 0;
 	while (s[i] != '\0')
 	{
-		if (s[i] == c && s[i + 1] != '\0' && s[i + 1] != c)
+		if ((i == 0 && s[i] != c) || (s[i] == c && s[i + 1] != '\0' &&
+			s[i + 1] != c))
 			count += 1;
 		i++;
 	}
 	return count;
 }
 
-int	sec_count(char const *s, char c)
+static int	sec_count(char const *s, char c)
 {
 	int	i;
 
@@ -38,13 +39,16 @@ int	sec_count(char const *s, char c)
 	return i;
 }
 
-void *error(char **split, int n)
+static void *error(char **split, int n)
 {
 	int	i;
 
 	i = 0;
 	while (i <= n)
+	{
 		free(split[i]);
+		i++;
+	}
 	free(split);
 	return NULL;
 }
@@ -64,11 +68,11 @@ char **ft_split(char const *s, char c)
 	j = 0;
 	while (i < n)
 	{
-		while (!(s[j - 1] == c && s[j] != c))
+		while (!(j == 0 && s[j] != c) && !(s[j - 1] == c && s[j] != c))
 			j++;
 		split[i] = malloc(sec_count(&s[j], c) + 1);
 		if (split[i] == NULL)
-			return (error(split, n));
+			return (error(split, i));
 		ft_strlcpy(split[i], &s[j], sec_count(&s[j], c) + 1);
 		i++;
 		j += sec_count(&s[j], c) + 1;
@@ -82,8 +86,8 @@ char **ft_split(char const *s, char c)
 int	main()
 {
 	int	i = 0;
-	char **test = ft_split("//wow//abcdef/efewf///", '/');
-	while (i <= 3)
+	char **test = ft_split("aa bb cc dd", ' ');
+	while (i <= 4)
 	{
 		printf("%s\n", test[i]);
 		i++;

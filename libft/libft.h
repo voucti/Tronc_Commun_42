@@ -6,7 +6,7 @@
 /*   By: vbucher <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 11:31:10 by vbucher           #+#    #+#             */
-/*   Updated: 2026/11/09 15:32:23 by vbucher          ###   ########.fr       */
+/*   Updated: 2026/11/11 16:23:41 by vbucher          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void			ft_putnbr_fd(int n, int fd);
 void			ft_putstr_fd(char *s, int fd);
 char			*ft_strchr(const char *s, int c);
 char			*ft_strdup(const char *s);
-char			*ft_striteri(char *s, void (*f) (unsigned int, char*));
 char			*ft_strjoin(char const *s1, char const *s2);
 size_t			ft_strlcat(char *dst, const char *src, size_t size);
 size_t			ft_strlcpy(char *dst, const char *src, size_t size);
@@ -65,7 +64,16 @@ char			*ft_strrchr(const char *s, int c);
 char			*ft_strnstr(const char *big, const char *little, size_t len);
 char			*ft_strtrim(char const *s1, char const *set);
 char			**ft_split(char const *s, char c);
-char			*ft_striteri(char *s, void (*f) (unsigned int, char*));
+void			ft_striteri(char *s, void (*f) (unsigned int, char*));
+char			*ft_itoa(int n);
 
+#endif
 
+#include <limits.h>
+#ifndef SIZE_MAX
+# ifdef __SIZE_MAX__
+#  define SIZE_MAX __SIZE_MAX__
+# else
+#  define SIZE_MAX std::numeric_limits<size_t>::max()
+# endif
 #endif

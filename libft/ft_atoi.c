@@ -6,7 +6,7 @@
 /*   By: vbucher <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 15:19:38 by vbucher           #+#    #+#             */
-/*   Updated: 2026/11/04 16:12:25 by vbucher          ###   ########.fr       */
+/*   Updated: 2026/11/11 16:15:27 by vbucher          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,8 @@ int	ft_atoi(const char *nptr)
 		i++;
 	if (nptr[i] == '-')
 		sign *= -1;
-	else if (nptr[i] != '+')
-		return 0;
-	i++;
+	if (nptr[i] == '-' || nptr[i] == '+')
+		i++;
 	while (nptr[i] >= 48 && nptr[i] <= 57)
 	{
 		n += nptr[i] - 48;
@@ -41,6 +40,6 @@ int	ft_atoi(const char *nptr)
 #include <stdio.h>
 int	main()
 {
-	printf("%d\n", ft_atoi("\t \n -1245793wef"));
+	printf("%d\n", ft_atoi("123"));
 }
 */

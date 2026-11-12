@@ -6,7 +6,7 @@
 /*   By: vbucher <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 13:52:04 by vbucher           #+#    #+#             */
-/*   Updated: 2026/11/04 11:35:56 by vbucher          ###   ########.fr       */
+/*   Updated: 2026/11/11 11:40:29 by vbucher          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,20 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t i;
 	unsigned char	*d;
-	unsigned char	*s;
+	unsigned const char	*s;
 
-	i = 0;
-	s = (unsigned char *)src;
+	s = (unsigned const char *)src;
 	d = (unsigned char *)dest;
-	while (i < n && d[i] != 0 && s[i] != 0)
+	if (d < s)
 	{
-		d[i] = s[i];
-		i++;
+		while (n--)
+			*d++ = *s++;
+	}
+	else
+	{
+		while (n--)
+			d[n] = s[n];
 	}
 	return (dest);
 }
@@ -33,10 +36,9 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 #include <stdio.h>
 int	main()
 {
-	char chaine[12] = "destination";
-	char	source[18] = "sourcesourcesource";
+	char chaine[] = "abcdefghijklmnop";
 
-	ft_memmove(chaine, source, 20);
+	ft_memmove(chaine + 2, chaine, 10);
 	printf("%s\n", chaine);
 }
 */

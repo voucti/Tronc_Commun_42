@@ -6,7 +6,7 @@
 /*   By: vbucher <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 13:29:34 by vbucher           #+#    #+#             */
-/*   Updated: 2026/11/09 13:40:16 by vbucher          ###   ########.fr       */
+/*   Updated: 2026/11/10 14:21:15 by vbucher          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ void	ft_lstdelone(t_list *lst, void (*del) (void*))
 {
 	if (!lst || !del)
 		return ;
-	del(&lst->content);
+	del(lst->content);
 	free(lst);
 }

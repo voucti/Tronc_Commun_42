@@ -6,13 +6,13 @@
 /*   By: vbucher <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/05 11:02:07 by vbucher           #+#    #+#             */
-/*   Updated: 2026/11/05 12:25:36 by vbucher          ###   ########.fr       */
+/*   Updated: 2026/11/11 10:12:38 by vbucher          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	unsearch(char const *str, char const *set)
+static int	unsearch(char const *str, char const *set)
 {
 	int i;
 	int	j;
@@ -36,7 +36,7 @@ int	unsearch(char const *str, char const *set)
 	return i;
 }
 
-int	rev_unsearch(char const *str, char const *set)
+static int	rev_unsearch(char const *str, char const *set)
 {
 	int i;
 	int	j;

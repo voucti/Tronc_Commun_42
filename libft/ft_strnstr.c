@@ -6,7 +6,7 @@
 /*   By: vbucher <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 15:22:31 by vbucher           #+#    #+#             */
-/*   Updated: 2026/11/04 15:48:20 by vbucher          ###   ########.fr       */
+/*   Updated: 2026/11/11 16:08:30 by vbucher          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,34 @@ char *ft_strnstr(const char *big, const char *little, size_t len)
 	size_t	j;
 
 	i = 0;
-	while (i < len)
+	if ((unsigned char)little[0] == '\0')
+		return (char *)big;
+	while (((len - i) >= ft_strlen(little)) && (unsigned char)big[i] != '\0')
 	{
 		j = 0;
-		while (big[i + j] == little[j])
+		while ((unsigned char)big[i + j] == (unsigned char)little[j])
+		{
 			j++;
-		if (little[j] == '\0')
-			return (char *) &big[i];
+			if ((unsigned char)little[j] == '\0')
+				return (char *)&big[i];
+		}
 		i++;
 	}
-	if (big[i] == '\0' || ft_strlen(little) == 0)
-		return (char *) big;
 	return NULL;
 }
-
 /*
+#include <string.h>
 #include <stdio.h>
 int	main()
 {
-	printf("%s\n", ft_strnstr("ecole 42 mulhouse", "42", 8));
-}
+	char	b[] = "Hello World";
+	char	l[] = "";
+	size_t	s = 11;
 
+	printf("%s\n", ft_strnstr(b, l, s));
+	printf("%s\n", strstr(b, l));
+}
+*/
 // If little is an empty string, big is returned; if little occurs nowhere in big, NULL is returned; otherwise a pointer to the first char‐
 //     acter of the first occurrence of little is returned.
-*/
+

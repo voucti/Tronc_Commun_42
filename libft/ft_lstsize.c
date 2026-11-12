@@ -6,11 +6,11 @@
 /*   By: vbucher <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 13:15:19 by vbucher           #+#    #+#             */
-/*   Updated: 2026/11/09 13:18:22 by vbucher          ###   ########.fr       */
+/*   Updated: 2026/11/12 17:07:10 by vbucher          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lift.h"
+#include "libft.h"
 
 unsigned int ft_lstsize(t_list *lst)
 {
@@ -19,10 +19,10 @@ unsigned int ft_lstsize(t_list *lst)
 
 	i = 0;
 	temp = lst;
-	while (temp->next->next != NULL)
+	while (temp)
 	{
 		i++;
-		temp->next = temp->next->next;
+		temp = temp->next;
 	}
 	return i;	
 }

@@ -6,7 +6,7 @@
 /*   By: vbucher <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 12:13:39 by vbucher           #+#    #+#             */
-/*   Updated: 2026/11/09 12:24:34 by vbucher          ###   ########.fr       */
+/*   Updated: 2026/11/10 14:00:46 by vbucher          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,7 @@
 
 void ft_putstr_fd(char *s, int fd)
 {
-	int	i;
-	int	len;
-
-	i = 0;
-	len = ft_strlen(s);
-	while (i < len)
-	{
-		write(fd, &s[i], 1);
-		i++;
-	}
+	write(fd, s, ft_strlen(s));
 }
 /*
 int	main()

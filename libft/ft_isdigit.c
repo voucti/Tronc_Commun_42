@@ -6,16 +6,11 @@
 /*   By: vbucher <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 12:54:07 by vbucher           #+#    #+#             */
-/*   Updated: 2026/11/03 15:41:42 by vbucher          ###   ########.fr       */
+/*   Updated: 2026/11/11 10:18:49 by vbucher          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-
-void	ft_putchar(char c)
-{
-	write (1, &c, 1);
-}
 
 int	ft_isdigit(int c)
 {

@@ -6,7 +6,7 @@
 /*   By: vbucher <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 12:25:02 by vbucher           #+#    #+#             */
-/*   Updated: 2026/11/09 12:42:36 by vbucher          ###   ########.fr       */
+/*   Updated: 2026/11/10 14:03:39 by vbucher          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,8 @@ void	ft_putnbr_fd(int n, int fd)
 		nb *= -1;
 	}
 	if (nb > 9)
-	{
 		ft_putnbr_fd(nb / 10, fd);
-		ft_putchar_fd(nb % 10 + 48, fd);
-	}
-	else
-		ft_putchar_fd(nb + 48, fd);
+	ft_putchar_fd((nb % 10) + 48, fd);
 }
 /*
 int	main()
