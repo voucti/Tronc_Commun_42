@@ -18,13 +18,13 @@ static int	powten(int p)
 
 	n = 10;
 	if (p == 0)
-		return 1;
+		return (1);
 	while (p > 1)
 	{
 		n *= 10;
 		p--;
 	}
-	return n;
+	return (n);
 }
 
 static char	*fill_number(char *out, long int nb, int i, int j)
@@ -37,15 +37,15 @@ static char	*fill_number(char *out, long int nb, int i, int j)
 		i--;
 	}
 	out[j] = '\0';
-	return out;
+	return (out);
 }
 
 char	*ft_itoa(int n)
 {
-	char	*out;
-	int	i;
-	int	j;
-	int	sign;
+	char		*out;
+	int			i;
+	int			j;
+	int			sign;
 	long int	nb;
 
 	nb = n;
@@ -57,7 +57,7 @@ char	*ft_itoa(int n)
 		i++;
 	out = malloc(i + 2 + (sign < 0));
 	if (out == NULL)
-		return NULL;
+		return (NULL);
 	out[0] = (sign < 0) * 45;
 	return (fill_number(out, nb, i, j));
 }

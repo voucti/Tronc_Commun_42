@@ -12,14 +12,14 @@
 
 #include "libft.h"
 
-char *ft_strnstr(const char *big, const char *little, size_t len)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
 	size_t	j;
 
 	i = 0;
 	if ((unsigned char)little[0] == '\0')
-		return (char *)big;
+		return ((char *)big);
 	while (((len - i) >= ft_strlen(little)) && (unsigned char)big[i] != '\0')
 	{
 		j = 0;
@@ -27,11 +27,11 @@ char *ft_strnstr(const char *big, const char *little, size_t len)
 		{
 			j++;
 			if ((unsigned char)little[j] == '\0')
-				return (char *)&big[i];
+				return ((char *)&big[i]);
 		}
 		i++;
 	}
-	return NULL;
+	return (NULL);
 }
 /*
 #include <string.h>
@@ -46,6 +46,8 @@ int	main()
 	printf("%s\n", strstr(b, l));
 }
 */
-// If little is an empty string, big is returned; if little occurs nowhere in big, NULL is returned; otherwise a pointer to the first char‐
-//     acter of the first occurrence of little is returned.
-
+/*
+ If little is an empty string, big is returned; if little occurs nowhere in big,
+ NULL is returned; otherwise a pointer to the first char‐
+     acter of the first occurrence of little is returned.
+*/

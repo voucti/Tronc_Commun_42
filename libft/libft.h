@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdint.h>
 
 typedef struct s_list
 {
@@ -67,13 +68,4 @@ char			**ft_split(char const *s, char c);
 void			ft_striteri(char *s, void (*f) (unsigned int, char*));
 char			*ft_itoa(int n);
 
-#endif
-
-#include <limits.h>
-#ifndef SIZE_MAX
-# ifdef __SIZE_MAX__
-#  define SIZE_MAX __SIZE_MAX__
-# else
-#  define SIZE_MAX std::numeric_limits<size_t>::max()
-# endif
 #endif

@@ -12,17 +12,17 @@
 
 #include "libft.h"
 
-void *ft_calloc(size_t memb, size_t size)
+void	*ft_calloc(size_t memb, size_t size)
 {
-	unsigned char *ptr;
+	unsigned char	*ptr;
 
 	if (memb != 0 && size > SIZE_MAX / memb)
-		return NULL;
+		return (NULL);
 	ptr = malloc(memb * size);
 	if (ptr == NULL)
-		return NULL;
+		return (NULL);
 	ft_bzero(ptr, memb * size);
-	return ptr;
+	return (ptr);
 }
 
 /*

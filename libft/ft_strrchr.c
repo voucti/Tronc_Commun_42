@@ -15,7 +15,7 @@
 char	*ft_strrchr(const char *s, int c)
 {
 	size_t	i;
-	int	temp;
+	int		temp;
 
 	c = c - ((c >= 256) * 256 * (c / 256));
 	temp = -1;
@@ -30,7 +30,7 @@ char	*ft_strrchr(const char *s, int c)
 		return ((char *)s + i);
 	if (temp != -1)
 		return ((char *)s + temp);
-	return NULL;
+	return (NULL);
 }
 /*
 #include <string.h>

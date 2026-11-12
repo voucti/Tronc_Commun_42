@@ -21,12 +21,12 @@ static int	tot_count(char const *s, char c)
 	count = 0;
 	while (s[i] != '\0')
 	{
-		if ((i == 0 && s[i] != c) || (s[i] == c && s[i + 1] != '\0' &&
-			s[i + 1] != c))
+		if ((i == 0 && s[i] != c) || (s[i] == c && s[i + 1] != '\0'
+				&& s[i + 1] != c))
 			count += 1;
 		i++;
 	}
-	return count;
+	return (count);
 }
 
 static int	sec_count(char const *s, char c)
@@ -36,10 +36,10 @@ static int	sec_count(char const *s, char c)
 	i = 0;
 	while (s[i] != c && s[i] != '\0')
 		i++;
-	return i;
+	return (i);
 }
 
-static void *error(char **split, int n)
+static void	*error(char **split, int n)
 {
 	int	i;
 
@@ -50,20 +50,20 @@ static void *error(char **split, int n)
 		i++;
 	}
 	free(split);
-	return NULL;
+	return (NULL);
 }
 
-char **ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	char **split;
-	int	n;
-	int i;
-	int j;
+	char	**split;
+	int		n;
+	int		i;
+	int		j;
 
 	n = tot_count(s, c);
 	split = malloc(sizeof(char *) * (n + 1));
 	if (split == NULL)
-		return NULL;
+		return (NULL);
 	i = 0;
 	j = 0;
 	while (i < n)
@@ -78,7 +78,7 @@ char **ft_split(char const *s, char c)
 		j += sec_count(&s[j], c) + 1;
 	}
 	split[i] = NULL;
-	return split;
+	return (split);
 }
 
 /*

@@ -14,7 +14,7 @@
 
 static int	unsearch(char const *str, char const *set)
 {
-	int i;
+	int	i;
 	int	j;
 	int	test;
 
@@ -30,15 +30,15 @@ static int	unsearch(char const *str, char const *set)
 			j++;
 		}
 		if (test == 0)
-			return i;
+			return (i);
 		i++;
 	}
-	return i;
+	return (i);
 }
 
 static int	rev_unsearch(char const *str, char const *set)
 {
-	int i;
+	int	i;
 	int	j;
 	int	test;
 
@@ -54,23 +54,22 @@ static int	rev_unsearch(char const *str, char const *set)
 			j++;
 		}
 		if (test == 0)
-			return i + 1;
+			return (i + 1);
 		i--;
 	}
-	return i + 1;
+	return (i + 1);
 }
 
-
-char *ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	char *trim;
-	int	start;
-	int	len;
+	char	*trim;
+	int		start;
+	int		len;
 
 	start = unsearch(s1, set);
 	len = rev_unsearch(s1, set) - start;
 	trim = ft_substr(s1, start, len);
-	return trim;
+	return (trim);
 }
 
 /*

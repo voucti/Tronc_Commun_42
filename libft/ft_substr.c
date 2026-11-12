@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-char *ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char *sub;
+	char	*sub;
 
 	if (start > ft_strlen(s))
 	{
@@ -29,10 +29,10 @@ char *ft_substr(char const *s, unsigned int start, size_t len)
 	else
 		sub = malloc(len + 1);
 	if (sub == NULL)
-		return NULL;
+		return (NULL);
 	ft_memcpy(sub, &s[start], len);
 	sub[len] = '\0';
-	return sub;
+	return (sub);
 }
 
 /*

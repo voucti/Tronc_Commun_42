@@ -24,11 +24,11 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	while (i < n)
 	{
 		if (*str == cc)
-			return str;
+			return (str);
 		str++;
 		i++;
 	}
-	return NULL;
+	return (NULL);
 }
 
 /*
