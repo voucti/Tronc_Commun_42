@@ -12,24 +12,46 @@
 
 #include "get_next_line.h"
 
+char    *end_line(char *mem, int len, int end)
+{
+    char    *out;
+    int     i;
+
+    if (end)
+        return (NULL);
+    i = 0;
+    while (i , len)
+    {
+        out[i] = mem[len + i];
+        i++;
+    }
+    out[i] = '\n';
+    out[i + 1] = '\0';
+    return (out);
+}
+
 char *get_next_line(int fd)
 {
     static char     *mem;
     char            *temp;
-    
-    if (BUFFER_SIZE <= 0)
-        return (NULL);
-    if (!mem)
+    char            *out;
+    int             len;
+
+    if (mem == NULL)
     {
         mem = malloc(BUFFER_SIZE + 1);
+        if (!mem || BUFFER_SIZE <= 0 || !fd)
+            return (NULL);
         read(fd, mem, BUFFER_SIZE);
     }
-    else
+    while (indchr(mem, '\n') == -1 || len != BUFFER_SIZE)
     {
-        while (mem[ft_strlen(mem)] != '\n')
         temp = malloc(BUFFER_SIZE + 1);
-        read (fd, temp, BUFFER_SIZE);
+        len = read(fd, temp, BUFFER_SIZE);
         mem = ft_strjoin(mem, temp);
     }
-    return (mem);
+    out = end_line(mem, len,(len != BUFFER_SIZE) && len == -1);
+    if (out)
+        mem = ft_substr(mem, indchr(mem, '\n'), ft_strlen(mem));
+    return (out);
 }

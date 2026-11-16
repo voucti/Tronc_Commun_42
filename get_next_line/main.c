@@ -36,7 +36,6 @@ int main()
     int fd;
     char    *line;
     
-    line = malloc(200);
     fd = open("test.txt", O_RDONLY);
     line = get_next_line(fd);
     write(1, line, ft_strlen(line));

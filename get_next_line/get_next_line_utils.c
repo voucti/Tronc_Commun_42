@@ -12,9 +12,26 @@
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *s)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	size_t	i;
+	size_t			i;
+	unsigned char	*d;
+	unsigned char	*s;
+
+	i = 0;
+	s = (unsigned char *)src;
+	d = (unsigned char *)dest;
+	while (i < n)
+	{
+		d[i] = s[i];
+		i++;
+	}
+	return (dest);
+}
+
+int	ft_strlen(char *s)
+{
+	int	i;
 
 	i = 0;
 	while (s[i] != '\0')
@@ -22,7 +39,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*res;
 	size_t	i;
@@ -47,4 +64,46 @@ char	*ft_strjoin(char const *s1, char const *s2)
     free(s1);
     free(s2);
 	return (res);
+}
+
+int	indchr(const char *s, int c)
+{
+	int	i;
+
+	i = 0;
+	c = c - ((c >= 256) * 256 * (c / 256));
+	while (s[i] != '\0')
+	{
+		if (s[i] == c - ((*s < 0 && c > 0) * 256))
+			return (i);
+		i++;
+	}
+	if (c == '\0')
+		return (i);
+	else
+		return (-1);
+}
+
+char	*ft_substr(char *s, unsigned int start, size_t len)
+{
+	char	*sub;
+
+	if (start > ft_strlen(s))
+	{
+		sub = malloc(1);
+		len = 0;
+	}
+	else if (len > (ft_strlen(s) - start))
+	{
+		sub = malloc(ft_strlen(s) - start + 1);
+		len = ft_strlen(s) - start;
+	}
+	else
+		sub = malloc(len + 1);
+	if (sub == NULL)
+		return (NULL);
+	ft_memcpy(sub, &s[start], len);
+	sub[len] = '\0';
+	free(s);
+	return (sub);
 }

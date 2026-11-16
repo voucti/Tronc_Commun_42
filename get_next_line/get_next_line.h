@@ -21,8 +21,11 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
-size_t	ft_strlen(const char *s);
-char	*ft_strjoin(char const *s1, char const *s2);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
+char	*ft_substr(char *s, unsigned int start, size_t len);
+int	indchr(const char *s, int c);
+int ft_strlen(char *s);
+char	*ft_strjoin(char *s1, char *s2);
 char *get_next_line(int fd);
 
 #endif
