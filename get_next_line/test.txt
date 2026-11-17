@@ -1,4 +1,0 @@
-phrase un
-phrase deux
-
-fin

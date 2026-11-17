@@ -6,52 +6,42 @@
 /*   By: vbucher <vbucher@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 12:18:42 by vbucher           #+#    #+#             */
-/*   Updated: 2026/11/16 16:42:36 by vbucher          ###   ########.fr       */
+/*   Updated: 2026/11/17 15:10:41 by vbucher          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char    *end_line(char *mem, int len, int end)
+char    *error(char *mem, char *temp)
 {
-    char    *out;
-    int     i;
-
-    if (end)
-        return (NULL);
-    i = 0;
-    while (i , len)
-    {
-        out[i] = mem[len + i];
-        i++;
-    }
-    out[i] = '\n';
-    out[i + 1] = '\0';
-    return (out);
+    free(mem);
+    free(temp);
+    return (NULL);
 }
 
 char *get_next_line(int fd)
 {
     static char     *mem;
     char            *temp;
-    char            *out;
     int             len;
+    char            *out;
 
+    len = 1;
     if (mem == NULL)
-    {
         mem = malloc(BUFFER_SIZE + 1);
-        if (!mem || BUFFER_SIZE <= 0 || !fd)
-            return (NULL);
-        read(fd, mem, BUFFER_SIZE);
-    }
-    while (indchr(mem, '\n') == -1 || len != BUFFER_SIZE)
+    while (indchr(mem, '\n') == -1 && len != 0)
     {
         temp = malloc(BUFFER_SIZE + 1);
+        if (!temp || !mem || fd < 0)
+            return(error(mem, temp));
         len = read(fd, temp, BUFFER_SIZE);
+        temp [BUFFER_SIZE] = '\0';
         mem = ft_strjoin(mem, temp);
     }
-    out = end_line(mem, len,(len != BUFFER_SIZE) && len == -1);
-    if (out)
-        mem = ft_substr(mem, indchr(mem, '\n'), ft_strlen(mem));
+    out = ft_substr(mem, 0, indchr(mem, '\n') + 1, 0);
+    mem = ft_substr(mem, indchr(mem, '\n') + 1, ft_strlen(mem)
+        - indchr(mem, '\n'), 1);
+    if (len == 0)
+        free(mem);
     return (out);
 }

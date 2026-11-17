@@ -6,15 +6,15 @@
 /*   By: vbucher <vbucher@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/16 13:27:03 by vbucher           #+#    #+#             */
-/*   Updated: 2026/11/16 16:41:14 by vbucher          ###   ########.fr       */
+/*   Updated: 2026/11/17 14:11:22 by vbucher          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memcpy(void *dest, const void *src, int n)
 {
-	size_t			i;
+	int			i;
 	unsigned char	*d;
 	unsigned char	*s;
 
@@ -29,7 +29,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	return (dest);
 }
 
-int	ft_strlen(char *s)
+int	ft_strlen(const char *s)
 {
 	int	i;
 
@@ -71,20 +71,16 @@ int	indchr(const char *s, int c)
 	int	i;
 
 	i = 0;
-	c = c - ((c >= 256) * 256 * (c / 256));
 	while (s[i] != '\0')
 	{
-		if (s[i] == c - ((*s < 0 && c > 0) * 256))
+		if (s[i] == c)
 			return (i);
 		i++;
 	}
-	if (c == '\0')
-		return (i);
-	else
-		return (-1);
+	return (-1);
 }
 
-char	*ft_substr(char *s, unsigned int start, size_t len)
+char	*ft_substr(char *s, int start, int len, int mode)
 {
 	char	*sub;
 
@@ -104,6 +100,7 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 		return (NULL);
 	ft_memcpy(sub, &s[start], len);
 	sub[len] = '\0';
-	free(s);
+	if (mode == 1)
+		free(s);
 	return (sub);
 }
