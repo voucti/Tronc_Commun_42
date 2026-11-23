@@ -6,7 +6,7 @@
 /*   By: vbucher <vbucher@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 12:18:42 by vbucher           #+#    #+#             */
-/*   Updated: 2026/11/17 15:10:41 by vbucher          ###   ########.fr       */
+/*   Updated: 2026/11/23 16:01:26 by vbucher          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 char    *error(char *mem, char *temp)
 {
-    free(mem);
-    free(temp);
+    if (mem)
+        free(mem);
+    if (temp)
+        free(temp);
     return (NULL);
 }
 
@@ -35,13 +37,14 @@ char *get_next_line(int fd)
         if (!temp || !mem || fd < 0)
             return(error(mem, temp));
         len = read(fd, temp, BUFFER_SIZE);
-        temp [BUFFER_SIZE] = '\0';
+        temp [len] = '\0';
         mem = ft_strjoin(mem, temp);
     }
-    out = ft_substr(mem, 0, indchr(mem, '\n') + 1, 0);
+    out = ft_substr(mem, 0, ((indchr(mem, '\n') != -1) * (indchr(mem, '\n') + 1))
+        + ((indchr(mem, '\n') == -1) * ft_strlen(mem)), 0);
     mem = ft_substr(mem, indchr(mem, '\n') + 1, ft_strlen(mem)
         - indchr(mem, '\n'), 1);
-    if (len == 0)
-        free(mem);
+    if (temp[0] == '\0')
+        return (free(mem), NULL);
     return (out);
 }

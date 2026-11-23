@@ -6,7 +6,7 @@
 /*   By: vbucher <vbucher@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 14:41:30 by vbucher           #+#    #+#             */
-/*   Updated: 2026/11/17 15:07:07 by vbucher          ###   ########.fr       */
+/*   Updated: 2026/11/23 15:28:25 by vbucher          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,24 @@ int main()
     int fd;
     char    *line;
     int     i = 1;
+    char    c[2] = "a";
+    int     len = 5;
     
+    fd = open("test.txt", O_RDONLY);
+    len = read(fd, c, 1);
+    while(len != 0)
+    {
+        if(c[0] == '\n')
+            i++;
+        len = read(fd, c, 1);
+    }
+    close(fd);
     fd = open("test.txt", O_RDONLY);
     while (i)
     {
         line = get_next_line(fd);
-        if (line == NULL)
-            write(1, "(null)", 6);
+        if (!line)
+            write(1, "error", 5);
         else
             write(1, line, ft_strlen(line));
         i--;
