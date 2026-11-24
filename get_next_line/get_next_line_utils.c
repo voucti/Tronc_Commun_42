@@ -6,7 +6,7 @@
 /*   By: vbucher <vbucher@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/16 13:27:03 by vbucher           #+#    #+#             */
-/*   Updated: 2026/11/17 14:11:22 by vbucher          ###   ########.fr       */
+/*   Updated: 2026/11/24 14:33:27 by vbucher          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memcpy(void *dest, const void *src, int n)
 {
-	int			i;
+	int				i;
 	unsigned char	*d;
 	unsigned char	*s;
 
@@ -61,8 +61,8 @@ char	*ft_strjoin(char *s1, char *s2)
 		j++;
 	}
 	res[i + j] = '\0';
-    free(s1);
-    free(s2);
+	free (s1);
+	free (s2);
 	return (res);
 }
 
@@ -85,10 +85,7 @@ char	*ft_substr(char *s, int start, int len, int mode)
 	char	*sub;
 
 	if (start > ft_strlen(s))
-	{
-		sub = malloc(1);
-		len = 0;
-	}
+		return (NULL);
 	else if (len > (ft_strlen(s) - start))
 	{
 		sub = malloc(ft_strlen(s) - start + 1);
